@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MingitavSozlukMobile.Views.FavouritesView">
+  <ContentView.Content>
+        <!--HomePage Content-->
+        <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+
+            <!--Title Label-->
+            <Label Text="Kaydedilen Kelimeler"
+                   Style="{StaticResource TitleStyle}"/>
+
+            <!--SubTitle Label-->
+            <Label Text="Kaydettiğiniz kelimeleri görüntüleyin..." 
+                   Style="{StaticResource SubTitleStyle}"/>
+
+            <!--Delete History Button-->
+            <Button Text="Tümünü Temizle"
+                    Style="{StaticResource ClearButton}"
+                    Command="{Binding DeleteHistoryCommand}"/>
+
+            <Grid>
+                <Frame Style="{StaticResource PancakeStyle}"
+                                   VerticalOptions="Start"
+                                   Margin="30,0,30,85">
+
+                    <ListView x:Name="wordListView"
+                              HasUnevenRows="true"
+                              ItemsSource="{Binding FavouritesList}"
+                              ItemTapped="wordListView_ItemTapped"
+                              CachingStrategy="RecycleElement"
+                              IsVisible="{Binding ListViewVisibility}"
+                              SeparatorColor="{AppThemeBinding Light=#d6d6d6, Dark=#474747}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Tapped="ViewCell_Tapped">
+                                    <ViewCell.View>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Padding="20,10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Text="{Binding KaracaycaAnlam}"
+                                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryBlack}, Dark={StaticResource TextDark}}"
+                                                   FontSize="{StaticResource FontSizeRegular}"
+                                                   FontAttributes="Bold"/>
+                                                <Label Grid.Row="1" Text="{Binding TurkceAnlam}"
+                                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryBlack}, Dark={StaticResource SubTitleTextDark}}"
+                                                   FontSize="{StaticResource FontSizeSmall}"
+                                                   FontAttributes="Italic"/>
+                                            </Grid>
+                                            <Button x:Name="RemoveButton"
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource TransparentButtonStyle}"
+                                                    Text="{StaticResource FontAwesomeBookmarkIcon}"
+                                                    FontSize="12"
+                                                    TextColor="{StaticResource PrimaryGreen}"
+                                                    HorizontalOptions="End"
+                                                    WidthRequest="40"
+                                                    Clicked="RemoveButton_Clicked"/>
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Frame>
+
+                <ActivityIndicator HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   IsRunning="{Binding SpinnerRunning}"
+                                   Color="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource TextDark}}"/>
+            </Grid>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

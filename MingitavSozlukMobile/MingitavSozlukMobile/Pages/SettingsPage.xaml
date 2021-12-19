@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MingitavSozlukMobile.Pages.SettingsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+
+        <!--HomePage Content-->
+        <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+
+            <!--Back Button-->
+            <Button x:Name="BackButton"
+                    Grid.Row="0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    Margin="0,20,0,0"
+                    Style="{StaticResource TransparentButtonStyle}"
+                    TextColor="{StaticResource PrimaryGray}"
+                    Text="{StaticResource FontAwesomeBackIcon}"
+                    FontSize="{StaticResource FontSizeXLarge}"
+                    Clicked="BackButton_Clicked"
+                    />
+
+            <!--Title Label-->
+            <Label Text="Sözlük Ayarları"
+                   Style="{StaticResource TitleStyle}"
+                   Margin="0,10,0,0"/>
+
+            <!--SubTitle Label-->
+            <Label Text="Sözlüğü özelleştirmek için ayarları yönetin." 
+                   Style="{StaticResource SubTitleStyle}"/>
+
+
+            <!--Word Card Title-->
+            <Label Text="Tema Seçimi"
+                   Margin="40,20,0,0"
+                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"
+                   FontFamily="{StaticResource PoppinsRegular}"
+                   FontSize="{StaticResource FontSizeRegular}"/>
+
+            <Grid Margin="40,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid Grid.Column="0">
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RadioSystemTapped"/>
+                    </Grid.GestureRecognizers>
+
+                    <Frame Style="{StaticResource PancakeStyle}"
+                                       VerticalOptions="Start"
+                                       HeightRequest="100"
+                                       Margin="0">
+                        <StackLayout 
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+
+                            <Label FontFamily="{StaticResource FontAwesomeSolid}" 
+                                   Text="{StaticResource FontAwesomeCogUserIcon}"
+                                   FontSize="{StaticResource FontSizeXLarge}"
+                                   HorizontalOptions="Center"
+                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource TextDark}}"
+                                   Margin="3,10,0,0" />
+
+                            <Label Text="Sistem"
+                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"
+                                   HorizontalOptions="Center"/>
+                            
+                        </StackLayout>
+                    </Frame>
+
+                    <RadioButton x:Name="radioSystem"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Start"
+                                 Margin="0,10,10,0"
+                                 GroupName="Theme"
+                                 BorderColor="White"
+                                 BackgroundColor="Transparent"
+                                 IsChecked="True"
+                                 CheckedChanged="radioSystem_CheckedChanged"/>
+                </Grid>
+                
+                <Grid Grid.Column="1">
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RadioLightTapped"/>
+                    </Grid.GestureRecognizers>
+                    
+                    <Frame Style="{StaticResource PancakeStyle}"
+                                       VerticalOptions="Start"
+                                       HeightRequest="100"
+                                       Margin="0">
+                        <StackLayout 
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+
+                            <Label FontFamily="{StaticResource FontAwesomeSolid}" 
+                                   Text="{StaticResource FontAwesomeLightIcon}"
+                                   FontSize="{StaticResource FontSizeXLarge}"
+                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource TextDark}}"
+                                   HorizontalOptions="Center"
+                                   Margin="0,10,0,0"/>
+
+                            <Label Text="Açık"
+                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"
+                                   HorizontalOptions="Center"/>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <RadioButton x:Name="radioLight"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Start"
+                                 GroupName="Theme"
+                                 BorderColor="White"
+                                 BackgroundColor="Transparent"
+                                 TextColor="White"
+                                 Margin="0,10,10,0"
+                                 CheckedChanged="radioLight_CheckedChanged"/>
+                </Grid>
+               
+                <Grid Grid.Column="2">
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RadioDarkTapped"/>
+                    </Grid.GestureRecognizers>
+
+                    <Frame Style="{StaticResource PancakeStyle}"
+                                       VerticalOptions="Start"
+                                       HeightRequest="100"
+                                       Margin="0">
+                        <StackLayout 
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+
+                            <Label FontFamily="{StaticResource FontAwesomeSolid}" 
+                                   Text="{StaticResource FontAwesomeDarkIcon}"
+                                   FontSize="{StaticResource FontSizeXLarge}"
+                                   HorizontalOptions="Center"
+                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource TextDark}}"
+                                   Margin="0,10,0,0"/>
+
+                            <Label Text="Koyu"
+                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"
+                                   HorizontalOptions="Center"/>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <RadioButton x:Name="RadioDark"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Start"
+                                 GroupName="Theme"
+                                 Margin="0,10,10,0"
+                                 CheckedChanged="RadioDark_CheckedChanged"/>
+                </Grid>
+            </Grid>
+
+            <!--Word Card Title-->
+            <Label Text="Yazı Boyutu"
+                   Margin="40,20,0,0"
+                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"
+                   FontFamily="{StaticResource PoppinsRegular}"
+                   FontSize="{StaticResource FontSizeRegular}"/>
+
+            <Grid Margin="40,10">
+                <Frame Style="{StaticResource PancakeStyle}"
+                                       VerticalOptions="Start"
+                                       HeightRequest="100"
+                                       Margin="0">
+
+                    <StackLayout VerticalOptions="Center">
+                        <Slider x:Name="fontSizeSlider"
+                            ThumbColor="Gray"
+                            MaximumTrackColor="Black"
+                            MinimumTrackColor="Black"
+                                ValueChanged="fontSizeSlider_ValueChanged"
+                                Minimum="0"
+                                Maximum="30"
+                                Margin="0,10"
+                                />
+
+                        <Label x:Name="fontSizeIndicator"
+                               HorizontalOptions="Center"
+                               FontAttributes="Bold"/>
+                    </StackLayout>
+                </Frame>
+                    
+            </Grid>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MingitavSozlukMobile.Controls.CustomPopup">
+  <ContentView.Content>
+        <Grid>
+            <Grid BackgroundColor="#000000"
+              Opacity=".7"/>
+            <Frame
+                   WidthRequest="280"
+                   HorizontalOptions="Center"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource LightPancakeBg}, Dark={StaticResource DarkPancakeBg}}"
+                   VerticalOptions="Center"
+                   CornerRadius="25">
+
+                    <StackLayout>
+                        <Label Text="{Binding CustomPopupTitle}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Start"
+                               FontAttributes="Bold"
+                               FontFamily="{StaticResource AbhayaLibreBold}"
+                               TextColor="{AppThemeBinding Light={StaticResource PrimaryBlack}, Dark={StaticResource TextDark}}"
+                               FontSize="27"
+                               Margin="0,20"/>
+
+                        <Label Text="{Binding CustomPopupContent}"
+                               HorizontalOptions="Center"
+                               FontFamily="{StaticResource PoppinsRegular}"
+                               TextColor="{AppThemeBinding Light={StaticResource PrimaryBlack}, Dark={StaticResource TextDark}}"
+                               VerticalOptions="Center"/>
+
+                        <Button Text="Tamam"
+                                VerticalOptions="End"
+                                Style="{StaticResource ClearButton}"
+                                Command="{Binding ClosePopupCommand}"
+                                Margin="0,20,0,10"/>
+                    </StackLayout>
+            </Frame>
+        </Grid>
+  </ContentView.Content>
+</ContentView>

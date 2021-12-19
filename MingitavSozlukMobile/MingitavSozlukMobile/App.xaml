@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MingitavSozlukMobile.App">
+    <Application.Resources>
+
+        <!--Color Resources-->
+        <ResourceDictionary Source="Styles/Colors.xaml"/>
+        
+        <!--Font Resources-->
+        <ResourceDictionary Source="Styles/Fonts.xaml"/>
+        
+        <!--Tab Resources-->
+        <ResourceDictionary Source="Styles/Tabs.xaml"/>
+
+        <!--Other Resources like buttons, entries etc...-->
+        <ResourceDictionary Source="Styles/Others.xaml"/>
+
+    </Application.Resources>
+</Application>

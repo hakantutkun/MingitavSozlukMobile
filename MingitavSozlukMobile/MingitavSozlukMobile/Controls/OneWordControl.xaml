@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MingitavSozlukMobile.Controls.OneWordControl">
+  <ContentView.Content>
+
+        <!--Random Word Card-->
+        <StackLayout>
+
+            <Grid>
+                <!--Word Card Title-->
+                <Label Text="Bir Kelime"
+                           Margin="40,10,0,0"
+                           FontFamily="{StaticResource PoppinsBold}"
+                           TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"
+                           FontSize="{StaticResource FontSizeRegular}"/>
+
+                <!--Refresh Button-->
+                <Button Style="{StaticResource TransparentButtonStyle}" 
+                                x:Name="refreshButton" 
+                                Text="{StaticResource FontAwesomeRefreshIcon}"
+                                FontSize="{StaticResource FontSizeRegular}"
+                                HeightRequest="30"
+                                Command="{Binding RefreshWordCommand}"
+                                />
+
+
+            </Grid>
+
+            <!--Card-->
+            <Frame Style="{StaticResource PancakeStyle}">
+
+                <!--Card Items Container-->
+                <StackLayout IsVisible="{Binding LayoutVisibility}">
+
+                    <!--Word-->
+                    <Label Text="{Binding MainWord}"
+                                   FontFamily="{StaticResource AbhayaLibreBold}"
+                                   FontSize="{StaticResource FontSizeXXLarge}"
+                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource TextDark}}"
+                                   Margin="20,25,20,5"
+                                   HorizontalOptions="Center"/>
+
+                    <!--Meaning-->
+                    <Label Text="{Binding MeaningText}"
+                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"
+                                    HorizontalOptions="Center"
+                                    Margin="30,0"/>
+
+                    <!--Buttons Container-->
+                    <StackLayout Orientation="Horizontal" 
+                                HorizontalOptions="Center"
+                                    Margin="0,0,0,10">
+
+                        <!--Copy Button-->
+                        <Button Style="{StaticResource WordCardButton}" 
+                                x:Name="copyButton" 
+                                Text="{StaticResource FontAwesomeCopyIcon}"
+                                BackgroundColor="{StaticResource PrimaryRed}"
+                                Clicked="copyButton_Clicked"/>
+
+                        <!--Listen Button-->
+                        <Button Style="{StaticResource WordCardButton}" 
+                                x:Name="listenButton" 
+                                Text="{StaticResource FontAwesomeSoundIcon}"
+                                BackgroundColor="{StaticResource PrimaryRed}"
+                                Clicked="listenButton_Clicked"/>
+
+                        <Grid>
+                            
+                            <!--Save Button-->
+                            <Button Style="{StaticResource SaveButtonStyle}"
+                                Text="{StaticResource FontAwesomeBookmarkIcon}"
+                                BackgroundColor="{StaticResource PrimaryRed}"
+                                Command="{Binding SaveCommand}"/>
+                            
+                            <!--Remove Button-->
+                            <Button Style="{StaticResource WordCardButton}"
+                                Text="{StaticResource FontAwesomeBookmarkIcon}"
+                                BackgroundColor="{StaticResource PrimaryRed}"
+                                Command="{Binding SaveCommand}"
+                                IsVisible="{Binding IsFav}"/>
+                            
+                        </Grid>
+
+                        <!--Share Button-->
+                        <Button Style="{StaticResource WordCardButton}" 
+                                x:Name="shareButton" 
+                                Text="{StaticResource FontAwesomeShareIcon}"
+                                BackgroundColor="{StaticResource PrimaryRed}"
+                                Clicked="shareButton_Clicked"/>
+
+                    </StackLayout>
+
+
+                </StackLayout>
+
+            </Frame>
+
+            <ActivityIndicator HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               IsRunning="{Binding SpinnerRunning}"
+                               Color="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource TextDark}}"/>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

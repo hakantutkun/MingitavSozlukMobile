@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+
+    <!--#region Colors-->
+    
+    <!--Light Background Color-->
+    <Color x:Key="LightBackgroundColor">#F8F8F8</Color>
+    <!--Dark Background Color-->
+    <Color x:Key="DarkBackgroundColor">#000000</Color>
+
+    <Color x:Key="ShadowLight">#9c9c9c</Color>
+    <Color x:Key="ShadowDark">#2f00ff</Color>
+
+    <Color x:Key="TextDark">#cccccc</Color>
+    <Color x:Key="SubTitleTextDark">#a6a6a6</Color>
+    <Color x:Key="PlaceHolderDark">#707070</Color>
+
+    <!--Light Background Color-->
+    <Color x:Key="LightPancakeBg">#FFFFFF</Color>
+    <!--Dark Background Color-->
+    <Color x:Key="DarkPancakeBg">#292929</Color>
+
+    <!--PrimaryGray-->
+    <Color x:Key="PrimaryBlack">#000000</Color>
+
+    <!--PrimaryGray-->
+    <Color x:Key="PrimaryGray">#444444</Color>
+
+    <!--PrimaryRed-->
+    <Color x:Key="PrimaryRed">#EA0025</Color>
+
+    <!--PrimaryWhite-->
+    <Color x:Key="PrimaryWhite">#FFFFFF</Color>
+
+    <!--PrimaryBlue-->
+    <Color x:Key="PrimaryBlue">#006ee6</Color>
+
+    <!--PrimaryGreen-->
+    <Color x:Key="PrimaryGreen">#00cc00</Color>
+
+    <!--#endregion-->
+
+    <!--Pancake Style-->
+    <Style TargetType="{x:Type Frame}" x:Key="PancakeStyle">
+        <Setter Property="Margin" Value="30,5,30,0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HasShadow" Value="False"/>
+        <Setter Property="xct:ShadowEffect.Color" Value="{AppThemeBinding Light={StaticResource ShadowLight}, Dark={StaticResource ShadowDark}}"/>
+        <Setter Property="xct:ShadowEffect.Radius" Value="20"/>
+        <Setter Property="xct:ShadowEffect.Opacity" Value=".4"/>
+        <Setter Property="CornerRadius" Value="17"/>
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightPancakeBg}, Dark={StaticResource DarkPancakeBg}}"/>
+    </Style> 
+    
+    <!--Entry Copy Button Style-->
+    <Style x:Key="TransparentButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Padding" Value="0,0,0,0"/>
+        <Setter Property="Margin" Value="0,0,5,0"/>
+        <Setter Property="FontFamily" Value="{DynamicResource FontAwesomeSolid}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource PlaceHolderDark}}"/>
+    </Style>
+
+    <!--Search Entry Style-->
+    <Style x:Key="SearchEntryStyle" TargetType="Entry">
+        <Setter Property="Placeholder" Value="Kelime Giriniz..." />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="FontFamily" Value="{DynamicResource PoppinsMedium}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlack}, Dark={StaticResource TextDark}}"/>
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource PlaceHolderDark}}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeRegular}"/>
+    </Style>
+
+    <!--Entry Search Button Style-->
+    <Style x:Key="SearchButtonStyle" TargetType="Label">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="#FFFFFF"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Margin" Value="5,0,0,0"/>
+        <Setter Property="Padding" Value="10,15,15,10"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Text" Value="{DynamicResource FontAwesomeSearchIcon}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource FontAwesomeSolid}"/>
+    </Style>
+    
+    <!--TitleStyle-->
+    <Style x:Key="TitleStyle" TargetType="Label">
+        <!--<Setter Property="TextColor" Value="{DynamicResource PrimaryGray}"/>-->
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource TextDark}}"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Start"/>
+        <Setter Property="Margin" Value="0,60,0,0"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeXXLarge}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource AbhayaLibreExtraBold}"/>
+    </Style>
+    
+    <!--Home SubTitle Style-->
+    <Style x:Key="SubTitleStyle" TargetType="Label">
+        <Setter Property="Margin" Value="0,8,0,10"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="FontFamily" Value="{DynamicResource PoppinsMedium}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeSmall}"/>
+    </Style>
+
+    <!--Word Card Button Style-->
+    <Style x:Key="WordCardButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryGray}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource FontAwesomeSolid}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryWhite}, Dark={StaticResource TextDark}}"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="WidthRequest" Value="40"/>
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="Padding" Value="0,0,8,0"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Margin" Value="0,15,0,15"/>
+        <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+
+    <Style x:Key="SaveButtonStyle" TargetType="Button" BasedOn="{StaticResource WordCardButton}">
+        <Setter Property="FontFamily" Value="{DynamicResource FontAwesomeRegular}"/>
+    </Style>
+    
+    <!--#region Tabs-->
+
+    <!--Default Tab Item Style-->
+    <Style TargetType="{x:Type xct:TabViewItem}" x:Key="DefaultTabViewItemStyle">
+        <Setter Property="FontFamily" Value="{DynamicResource FontAwesomeRegular }"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeLarge}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource TextDark}}"/>
+        <Setter Property="TextColorSelected" Value="{DynamicResource PrimaryBlue}"/>
+        <Setter Property="ControlTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Label Grid.Row="0"
+				               VerticalOptions="Center"
+				               HorizontalOptions="Center"
+                               FontFamily="{TemplateBinding FontFamily}"
+				               Text="{TemplateBinding Text}"
+                               TextColor="{TemplateBinding TextColor}"
+                               FontSize="{TemplateBinding FontSize}"/>
+                        <BoxView BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"
+                                 CornerRadius="4"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="EndAndExpand"
+                                 HeightRequest="2"
+                                 WidthRequest="35"
+                                 Margin="0,0,0,7"
+                                 IsVisible="{TemplateBinding IsSelected}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Centered Tab Item Template-->
+    <ControlTemplate x:Key="CenterTabItemTemplate">
+        <Grid>
+            <BoxView BackgroundColor="{StaticResource PrimaryRed}"
+                         WidthRequest="60"
+                         HeightRequest="60"
+                         Margin="0,0,0,14"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         CornerRadius="60">
+
+            </BoxView>
+            <Label Grid.Row="0"
+				       VerticalOptions="Center"
+				       HorizontalOptions="Center"
+                       Margin="0,0,0,10"
+                       FontFamily="{StaticResource FontAwesomeSolid}"
+				       Text="{TemplateBinding Text}"
+                       TextColor="White"
+                       FontSize="{StaticResource FontSizeLarge}"/>
+            <BoxView BackgroundColor="#444444"
+                       CornerRadius="4"
+                       HorizontalOptions="Center"
+                       VerticalOptions="EndAndExpand"
+                       HeightRequest="2"
+                       WidthRequest="35"
+                       Margin="0,0,0,7"
+                       IsVisible="{TemplateBinding IsSelected}"/>
+        </Grid>
+    </ControlTemplate>
+
+
+    <!--#endregion-->
+
+    <Style x:Key="ClearButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Red"/>
+        <Setter Property="WidthRequest" Value="120"/>
+        <Setter Property="HeightRequest" Value="36"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="CornerRadius" Value="7"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="Margin" Value="0,0,0,17"/>
+    </Style>
+
+</ResourceDictionary>

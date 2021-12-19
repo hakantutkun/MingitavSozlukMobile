@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--#region FontAwesome Fonts -->
+    
+    <!--FontAwesome Regular Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+        <On Platform="Android" Value="Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free Regular" />
+    </OnPlatform>
+
+    <!--FontAwesome Solid Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+        <On Platform="Android" Value="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid" />
+    </OnPlatform>
+
+    <!--#endregion-->
+
+    <!--#region Abhaya Libre Fonts -->
+
+    <!--Abhaya Libre Regular Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="AbhayaLibreRegular">
+        <On Platform="Android" Value="AbhayaLibre-Regular.ttf#Abhaya Libre" />
+    </OnPlatform>
+
+    <!--Abhaya Libre Medium Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="AbhayaLibreMedium">
+        <On Platform="Android" Value="AbhayaLibre-Medium.ttf#Abhaya Libre" />
+    </OnPlatform>
+
+    <!--Abhaya Libre SemiBold Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="AbhayaLibreSemiBold">
+        <On Platform="Android" Value="AbhayaLibre-SemiBold.ttf#Abhaya Libre" />
+    </OnPlatform>
+
+    <!--Abhaya Libre Bold Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="AbhayaLibreBold">
+        <On Platform="Android" Value="AbhayaLibre-Bold.ttf#Abhaya Libre" />
+    </OnPlatform>
+
+    <!--Abhaya Libre ExtraBold Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="AbhayaLibreExtraBold">
+        <On Platform="Android" Value="AbhayaLibre-ExtraBold.ttf#Abhaya Libre" />
+    </OnPlatform>
+    
+    <!--#endregion-->
+
+    <!--#region Besley Fonts -->
+
+    <!--Besley Regular Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="BesleyRegular">
+        <On Platform="Android" Value="Besley-Regular.ttf#Besley" />
+    </OnPlatform>
+
+    <!--Besley Medium Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="BesleyMedium">
+        <On Platform="Android" Value="Besley-Medium.ttf#Besley" />
+    </OnPlatform>
+
+    <!--Besley Black Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="BesleyBlack">
+        <On Platform="Android" Value="Besley-Black.ttf#Besley" />
+    </OnPlatform>
+
+    <!--Besley SemiBold Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="BesleySemiBold">
+        <On Platform="Android" Value="Besley-SemiBold.ttf#Besley" />
+    </OnPlatform>
+
+    <!--#endregion-->
+
+    <!--#region Poppins Fonts -->
+
+    <!--Poppins Regular Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsRegular">
+        <On Platform="Android" Value="Poppins-Regular.ttf#Poppins" />
+    </OnPlatform>
+
+    <!--Poppins Medium Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsMedium">
+        <On Platform="Android" Value="Poppins-Medium.ttf#Poppins" />
+    </OnPlatform>
+
+    <!--Poppins Bold Font-->
+    <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsBold">
+        <On Platform="Android" Value="Poppins-Bold.ttf#Poppins" />
+    </OnPlatform>
+
+    <!--#endregion-->
+
+    <!--#region Font Size Definitions -->
+    
+    <system:Double x:Key="FontSizeSmaller">10</system:Double>
+    <system:Double x:Key="FontSizeSmall">12</system:Double>
+    <system:Double x:Key="FontSizeRegular">14</system:Double>
+    <system:Double x:Key="FontSizeLarge">20</system:Double>
+    <system:Double x:Key="FontSizeXLarge">24</system:Double>
+    <system:Double x:Key="FontSizeXXLarge">30</system:Double>
+    
+    <!--#endregion-->
+
+    <!--#region Pre-Defined FontAwesome Icons -->
+
+    <system:String x:Key="FontAwesomeSearchIcon">&#xf002;</system:String>
+    <system:String x:Key="FontAwesomeHistoryIcon">&#xf017;</system:String>
+    <system:String x:Key="FontAwesomeBookmarkIcon">&#xf02e;</system:String>
+    <system:String x:Key="FontAwesomeCopyIcon">&#xf0c5;</system:String>
+    <system:String x:Key="FontAwesomeSoundIcon">&#xf028;</system:String>
+    <system:String x:Key="FontAwesomeShareIcon">&#xf1e0;</system:String>
+    <system:String x:Key="FontAwesomeCloseIcon">&#xf00d;</system:String>
+    <system:String x:Key="FontAwesomeBackIcon">&#xf104;</system:String>
+    <system:String x:Key="FontAwesomeBulletIcon">&#xf138;</system:String>
+    <system:String x:Key="FontAwesomeCogUserIcon">&#xf4fe;</system:String>
+    <system:String x:Key="FontAwesomeLightIcon">&#xf185;</system:String>
+    <system:String x:Key="FontAwesomeDarkIcon">&#xf186;</system:String>
+    <system:String x:Key="FontAwesomeRefreshIcon">&#xf021;</system:String>
+    <system:String x:Key="FontAwesomeListIcon">&#xf03a;</system:String>
+    <system:String x:Key="FontAwesomeSettingsIcon">&#xf013;</system:String>
+
+    <!--#endregion-->
+    
+</ResourceDictionary>

@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MingitavSozlukMobile.Views.HomeView"
+             xmlns:custom="clr-namespace:MingitavSozlukMobile.CustomRenderers"
+             xmlns:controls="clr-namespace:MingitavSozlukMobile.Controls"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+
+    <ContentView.Content>
+
+        <!--HomePage Content-->
+        <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+
+            <!--Title Label-->
+            <Label Text="Mingi Tav"
+                   Style="{StaticResource TitleStyle}"/>
+
+            <!--SubTitle Label-->
+            <Label Text="13521 kelime içinden arama yapın..." 
+                   Style="{StaticResource SubTitleStyle}"/>
+
+            <!--Search Bar Entry Container-->
+            <Frame Style="{StaticResource PancakeStyle}"
+                               HeightRequest="50">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <!--Copy Button Column-->
+                        <ColumnDefinition Width="40"/>
+                        <!--Entry Column-->
+                        <ColumnDefinition Width="*"/>
+                        <!--Search Button Column-->
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--CopyButton-->
+                    <Label Grid.Column="0" 
+                           x:Name="copyLabel"
+                           Text="{StaticResource FontAwesomeCopyIcon}" 
+                           Style="{StaticResource TransparentButtonStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CopyLabel_Tapped"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <!--Entry-->
+                    <custom:TransparentEntry x:Name="searchEntry" 
+                                             Grid.Column="1" 
+                                             HeightRequest="40" 
+                                             Text="{Binding SearchText, Mode=TwoWay}"
+                                             Style="{StaticResource SearchEntryStyle}" 
+                                             TextChanged="searchEntry_TextChanged"/>
+
+                    <!--Search Button Container-->
+                    <Frame Grid.Column="2" 
+                            BackgroundColor="{StaticResource PrimaryRed}" 
+                            CornerRadius="15" 
+                            Margin="3"
+                            Padding="0">
+
+                        <Grid>
+                            <!--Search Button-->
+                            <Label Style="{StaticResource SearchButtonStyle}" 
+                                   FontSize="{StaticResource FontSizeSmall}"
+                                   IsVisible="{Binding SearchButtonVisibility}"/>
+                            <!--Close Button-->
+                            <Label x:Name="EntryCloseButton"
+                                   Style="{StaticResource SearchButtonStyle}" 
+                                   FontSize="{StaticResource FontSizeSmall}"
+                                   Text="{StaticResource FontAwesomeCloseIcon}"
+                                   IsVisible="{Binding CloseButtonVisibility}"
+                                   >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClearCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+
+                    </Frame>
+
+                </Grid>
+
+            </Frame>
+
+            <Grid>
+
+                <StackLayout>
+
+                    <controls:OneWordControl/>
+
+                    <Grid Margin="30,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0"
+                              Grid.Column="0"
+                              x:Name="AllWordsGrid"
+                              >
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AllWordsGrid_Tapped"/>
+                            </Grid.GestureRecognizers>
+
+                            <Frame Style="{StaticResource PancakeStyle}"
+                                   Margin="0"
+                                   Padding="20,10,20,10">
+
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Label Text="{StaticResource FontAwesomeListIcon}"
+                                        Style="{StaticResource TransparentButtonStyle}"
+                                        HorizontalOptions="Start"
+                                        WidthRequest="50"
+                                        FontSize="{StaticResource FontSizeXXLarge}"/>
+
+                                    <Label Text="Tüm Kelimeler"
+                                           TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource PrimaryGray}}"
+                                           FontFamily="{StaticResource PoppinsRegular}"
+                                           HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"/>
+
+                                </StackLayout>
+
+                            </Frame>
+                        </Grid>
+
+                        <Grid Grid.Row="0"
+                              Grid.Column="1">
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SettingsGrid_Tapped"/>
+                            </Grid.GestureRecognizers>
+
+                            <Frame Style="{StaticResource PancakeStyle}"
+                                   Margin="0"
+                                   Padding="20,10,20,10">
+
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Label Text="{StaticResource FontAwesomeSettingsIcon}"
+                                        Style="{StaticResource TransparentButtonStyle}"
+                                        HorizontalOptions="Start"
+                                        WidthRequest="50"
+                                        FontSize="{StaticResource FontSizeXXLarge}"/>
+
+                                    <Label Text="Sözlük Ayarları"
+                                           TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource PrimaryGray}}"
+                                           FontFamily="{StaticResource PoppinsRegular}"
+                                           HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"/>
+
+                                </StackLayout>
+
+                            </Frame>
+                        </Grid>
+
+                    </Grid>
+
+                </StackLayout>
+
+                <!--SearchListView-->
+                <Frame x:Name="listViewContainer"
+                                   Style="{StaticResource PancakeStyle}"
+                                   VerticalOptions="Start"
+                                   CornerRadius="14"
+                                   IsVisible="{Binding ListViewVisibility}"
+                                   Margin="30,0,30,85">
+
+                    <ListView x:Name="wordListView"
+                              HeightRequest="300"
+                              HasUnevenRows="true"
+                              ItemsSource="{Binding SearchResultList}"
+                              ItemSelected="wordListView_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Tapped="ViewCell_Tapped">
+                                    <ViewCell.View>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Padding="20,10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Text="{Binding KaracaycaAnlam}"
+                                                       TextColor="{AppThemeBinding Light={StaticResource PrimaryBlack}, Dark={StaticResource TextDark}}"
+                                                       FontSize="{StaticResource FontSizeRegular}"
+                                                       FontAttributes="Bold"/>
+                                                <Label Grid.Row="1" Text="{Binding TurkceAnlam}"
+                                                       TextColor="{AppThemeBinding Light={StaticResource PrimaryGray}, Dark={StaticResource SubTitleTextDark}}"
+                                                       FontSize="{StaticResource FontSizeSmall}"
+                                                       FontAttributes="Italic"/>
+                                            </Grid>
+                                            <Button Grid.Column="1"
+                                                    Style="{StaticResource TransparentButtonStyle}"
+                                                    Text="{StaticResource FontAwesomeBulletIcon}"
+                                                    FontSize="12"
+                                                    TextColor="{StaticResource PrimaryWhite}"
+                                                    HorizontalOptions="End"
+                                                    WidthRequest="40"/>
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

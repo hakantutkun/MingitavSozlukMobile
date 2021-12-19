@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:controls="clr-namespace:MingitavSozlukMobile.Controls"
+             xmlns:views="clr-namespace:MingitavSozlukMobile.Views"
+             x:Class="MingitavSozlukMobile.Pages.MainPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+
+    <Grid>
+
+        <!--Main Tab View-->
+        <xct:TabView Padding="0,0,0,0"
+                     x:Name="customTabView"
+                     TabStripHeight="50"
+                     TabStripPlacement="Bottom">
+
+            <!--Background of Tab Bar-->
+            <xct:TabView.TabStripBackgroundView>
+                <BoxView Color="{AppThemeBinding Light={StaticResource LightPancakeBg}, Dark={StaticResource DarkPancakeBg}}"
+                     CornerRadius="36,36,0,0"
+                     Margin="0"
+                     xct:ShadowEffect.Color="{AppThemeBinding Light=Black,Dark=Black}"
+                     xct:ShadowEffect.Radius="40"
+                     xct:ShadowEffect.OffsetX="-20"
+                     BackgroundColor="{AppThemeBinding Light={StaticResource LightPancakeBg}, Dark={StaticResource DarkPancakeBg}}"/>
+            </xct:TabView.TabStripBackgroundView>
+
+            <!--History Tab Item-->
+            <xct:TabViewItem x:Name="HistoryTabItem"
+                         Style="{StaticResource DefaultTabViewItemStyle}"
+                         Text="{StaticResource FontAwesomeHistoryIcon}"
+                         Margin="50,0,0,0"
+                         TabTapped="HistoryTabItem_TabTapped">
+
+                <!--History Tab Content-->
+                <views:HistoryView/>
+
+            </xct:TabViewItem>
+
+            <!--Search Tab View-->
+            <xct:TabViewItem x:Name="SearchTabItem"
+                         IsSelected="True"
+                         Text="{StaticResource FontAwesomeSearchIcon}"
+                         ControlTemplate="{StaticResource CenterTabItemTemplate}">
+
+                <!--Search Tab Content-->
+                <views:HomeView/>
+
+            </xct:TabViewItem>
+
+            <!--Favourites Tab View-->
+            <xct:TabViewItem x:Name="FavouritesTabItem"
+                         Style="{StaticResource DefaultTabViewItemStyle}"
+                         Text="{StaticResource FontAwesomeBookmarkIcon}"
+                         Margin="0,0,50,0"
+                         TabTapped="FavouritesTabItem_TabTapped">
+
+                <!--Favourites Tab Content-->
+                <views:FavouritesView/>
+
+            </xct:TabViewItem>
+        </xct:TabView>
+
+        <!--Custom Popup-->
+        <controls:CustomPopup x:Name="customPopup" 
+                              IsVisible="{Binding CustomPopupVisibility}"/>
+        
+    </Grid>
+    
+
+</ContentPage>
