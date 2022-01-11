@@ -77,6 +77,15 @@
         <Setter Property="FontSize" Value="{DynamicResource FontSizeRegular}"/>
     </Style>
 
+    <!--Search Entry Complete Text Style-->
+    <Style x:Key="SearchEntryCompleteText" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="FontFamily" Value="{DynamicResource PoppinsMedium}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextDark}, Dark={StaticResource TextDark}}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeRegular}"/>
+    </Style>
+
     <!--Entry Search Button Style-->
     <Style x:Key="SearchButtonStyle" TargetType="Label">
         <Setter Property="BackgroundColor" Value="Transparent"/>

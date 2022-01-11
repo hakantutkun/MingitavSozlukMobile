@@ -12,12 +12,20 @@
         <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
 
             <!--Title Label-->
-            <Label Text="Mingi Tav"
+            <Label Text="Karaçay Malkar Dili Sözlüğü"
+                   HorizontalOptions="Center"
                    Style="{StaticResource TitleStyle}"/>
 
             <!--SubTitle Label-->
-            <Label Text="13521 kelime içinden arama yapın..." 
-                   Style="{StaticResource SubTitleStyle}"/>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="{Binding NumberOfWords}" 
+                       Style="{StaticResource SubTitleStyle}"
+                       HorizontalOptions="Start"/>
+                <Label Text="adet kelime içinden arama yapın..." 
+                       HorizontalOptions="Start"
+                       Style="{StaticResource SubTitleStyle}"/>
+            </StackLayout>
 
             <!--Search Bar Entry Container-->
             <Frame Style="{StaticResource PancakeStyle}"
@@ -45,6 +53,15 @@
 
                     </Label>
 
+                    <!--Search Complete Text-->
+                    <Label Text="{Binding SearchCompleteText}"
+                           IsVisible="{Binding CloseButtonVisibility}"
+                           Grid.Column="1"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           Margin="0,0,0,-2"
+                           Style="{StaticResource SearchEntryCompleteText}" />
+                    
                     <!--Entry-->
                     <custom:TransparentEntry x:Name="searchEntry" 
                                              Grid.Column="1" 

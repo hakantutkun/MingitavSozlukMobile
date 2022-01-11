@@ -128,5 +128,16 @@ namespace MingitavSozlukMobile.Services
             return await db.Table<Kelime>().Where(s => s.IsFav.Equals(1)).OrderByDescending(i => i.SearchTime).ToListAsync();
         }
 
+        /// <summary>
+        /// Gets number of words
+        /// </summary>
+        /// <returns></returns>
+        public static int GetNumberOfWords()
+        {
+            InitDB();
+
+            return db.Table<Kelime>().CountAsync().Result;
+        }
+
     }
 }

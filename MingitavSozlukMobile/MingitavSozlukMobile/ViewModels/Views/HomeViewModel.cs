@@ -1,7 +1,9 @@
-﻿using MingitavSozlukMobile.Services;
+﻿using MingitavSozlukMobile.Helpers;
+using MingitavSozlukMobile.Services;
 using MingitavSozlukMobile.ViewModels.Base;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -27,6 +29,18 @@ namespace MingitavSozlukMobile.ViewModels
         }
 
         /// <summary>
+        /// Number of words
+        /// </summary>
+        private int _numberOfWords = 0;
+
+        public int NumberOfWords
+        {
+            get { return _numberOfWords; }
+            set { _numberOfWords = value; OnPropertyChanged(nameof(NumberOfWords)); }
+        }
+
+
+        /// <summary>
         /// Subtitle Of The view
         /// </summary>
         private string _pageSubTitle;
@@ -47,6 +61,15 @@ namespace MingitavSozlukMobile.ViewModels
             get { return _searchText; }
             set { _searchText = value; OnPropertyChanged(nameof(SearchText)); }
         }
+
+        private string _searchCompleteText;
+
+        public string SearchCompleteText
+        {
+            get { return _searchCompleteText; }
+            set { _searchCompleteText = value; OnPropertyChanged(nameof(SearchCompleteText)); }
+        }
+
 
         /// <summary>
         /// A flag that controls listview visibility
@@ -113,6 +136,18 @@ namespace MingitavSozlukMobile.ViewModels
             // Set the clear command
             ClearCommand = new Command(Clear);
 
+            // Set the number of words
+            if (Settings.NumberOfWords == 0)
+            {
+                Settings.NumberOfWords = DBService.GetNumberOfWords();
+
+                NumberOfWords = Settings.NumberOfWords;
+            }
+            else
+            {
+                NumberOfWords = Settings.NumberOfWords;
+            }
+
             // Create an instance for SearchResult list.
             SearchResultList = new ObservableCollection<Kelime>();
         }
@@ -154,6 +189,14 @@ namespace MingitavSozlukMobile.ViewModels
                 // Get the words from database with given search text.
                 var returnList = await DBService.LoadWordsLike(searchText);
 
+                // Check if there are no words
+                if (returnList.Count == 0)
+                    SearchCompleteText = string.Empty;
+
+                // Set Complete Text
+                if (returnList.Count > 0)
+                    SearchCompleteText = returnList.FirstOrDefault().KaracaycaAnlam;
+
                 // Update search result list.
                 SearchResultList = new ObservableCollection<Kelime>(returnList);
 
@@ -170,6 +213,9 @@ namespace MingitavSozlukMobile.ViewModels
             {
                 // Show search button.
                 SearchButtonVisibility = true;
+
+                // Clear complete text
+                SearchCompleteText = string.Empty;
 
                 // Hide close button.
                 CloseButtonVisibility = false;
